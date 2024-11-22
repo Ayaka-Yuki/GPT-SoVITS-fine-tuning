@@ -3,7 +3,10 @@
 This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeline** using Vtuber-related data. Below are the detailed steps of the process:
 
 ---
-
+## 0. Install dependences:
+  ```bash
+    pip install -r requirements.txt
+  ```
 ## 1. Training Data Generation
 
 - **Audio Downloading:**  
@@ -103,7 +106,7 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 
 ---
 
-## 6. Evaluadtion
+## 6. Evaluation
 - We use [speechmetrics](https://github.com/aliutkus/speechmetrics/tree/master) and [mel_cepstral_distance](https://github.com/jasminsternkopf/mel_cepstral_distance) for evaluation and comparison of models.
 
 ---
