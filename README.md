@@ -92,8 +92,11 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ## 5. Inference
 
 - The **inference_cli**:
-  - Loads fine-tuned weights.
-  - Uses a reference audio and target text to generate the target audio.
+  - Loads fine-tuned weights from GPT-weights folder and SoVITS-weights folder.
+  - Uses a reference audio and target text to generate the target audio. We had a predefined piece of reference audio in our script, replace with you own reference audio path.
+    ```bash
+      python inference_cli.py --gpt_model ./GPT_weights/gpt_model.ckpt --sovits_model ./SoVITS_weights/sovits_model.pth --target_text ./test.txt  --output_path ./output_folder
+    ```
 
 - **Observation:**  
   Removing the reference audio significantly reduces the quality of the generated target audio.
@@ -101,13 +104,8 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ---
 
 ## 6. Evaluadtion
-- We use [speechmetrics](https://github.com/aliutkus/speechmetrics/tree/master) and [mel_cepstral_distance](https://github.com/jasminsternkopf/mel_cepstral_distance)
-  - Loads fine-tuned weights.
-  - Uses a reference audio and target text to generate the target audio.
+- We use [speechmetrics](https://github.com/aliutkus/speechmetrics/tree/master) and [mel_cepstral_distance](https://github.com/jasminsternkopf/mel_cepstral_distance) for evaluation and comparison of models.
 
-- **Observation:**  
-  Removing the reference audio significantly reduces the quality of the generated target audio.
-  
 ---
 
 ## Related Projects
