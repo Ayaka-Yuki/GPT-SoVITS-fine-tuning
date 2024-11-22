@@ -7,7 +7,7 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ## 1. Training Data Generation
 
 - **Audio Downloading:**  
-  Vtuber audio files are downloaded using [yt-dlp](https://github.com/yt-dlp/yt-dlp), along with subtitles and timestamps
+  - Vtuber audio files are downloaded using [yt-dlp](https://github.com/yt-dlp/yt-dlp), along with subtitles and timestamps
   ```bash
 yt-dlp --write-subs --all-subs -f bestaudio --extract-audio --audio-format wav --sub-format srt -o "%(title)s.%(ext)s" --cookies-from-browser chrome url
   ```
