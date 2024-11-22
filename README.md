@@ -62,6 +62,16 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 
 ---
 
+## 6. Evaluadtion
+- We use [speechmetrics](https://github.com/aliutkus/speechmetrics/tree/master) and [mel_cepstral_distance](https://github.com/jasminsternkopf/mel_cepstral_distance)
+  - Loads fine-tuned weights.
+  - Uses a reference audio and target text to generate the target audio.
+
+- **Observation:**  
+  Removing the reference audio significantly reduces the quality of the generated target audio.
+  
+---
+
 ## Related Projects
 
 For further details, visit the official [GPT-SoVITS GitHub Repository](https://github.com/RVC-Boss/GPT-SoVITS/tree/main?tab=readme-ov-file).
