@@ -19,7 +19,7 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
     whisper sample.wav --model small --output_format srt --language Chinese
     ```
 
-  - (Optional) To minimize timestamp errors, primitive slicing is performed to reduce large audio file sizes by running:
+  - (Optional) To minimize timestamp errors, primitive slicing is performed to reduce large audio file sizes by running split_audio script in tools/audio_text_folder:
 
     ```bash
     python split_audio.py sample.wav output_folder
@@ -30,13 +30,19 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ## 2. Dataset Preparation
 
 - **Slicing Audio:**  
-  A custom slicer is used to cut audio files based on subtitle timestamps. However, some slices may contain long silences at the beginning or end.
+  A custom slicer is used to cut audio files based on subtitle timestamps. However, some slices may contain long silences at the beginning or end. Please redefine your input folder and output folder in script:
+  ```bash
+    python slice.py
+  ```
   
 - **Denoising:**  
-  Sliced audio files undergo a denoising process to enhance quality.
+  Sliced audio files undergo a denoising process to enhance quality:
+   ```bash
+    python denoise.py -i input_folder -o output_folder  
+  ```
 
 - **Transcription:**  
-  Corresponding text files are generated for each audio slice containing the respective transcriptions.
+  Corresponding text files are generated for each audio slice containing the respective transcriptions. This is achieved in the slicing step as well.
 
 ---
 
