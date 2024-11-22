@@ -4,19 +4,30 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 
 ---
 
+Here’s the complete, neatly formatted Markdown including subtitles:
+
 ## 1. Training Data Generation
 
 - **Audio Downloading:**  
-  Vtuber audio files are downloaded using [yt-dlp](https://github.com/yt-dlp/yt-dlp), along with subtitles and timestamps
+  Vtuber audio files are downloaded using [yt-dlp](https://github.com/yt-dlp/yt-dlp), along with subtitles and timestamps:
+
   ```bash
-yt-dlp --write-subs --all-subs -f bestaudio --extract-audio --audio-format wav --sub-format srt -o "%(title)s.%(ext)s" --cookies-from-browser chrome url
-```bash
-  - For videos without subtitles, [Whisper](https://github.com/openai/whisper) generates subtitles in SRT format.
-  ```bash
-whisper sample.wav --model small --output_format srt --language Chinese
-  - (Optional) To minimize timestamp errors, primitive slicing is performed to reduce large audio file sizes by running
-  ```bash
-python split_audio.py sample.wav output_folder
+  yt-dlp --write-subs --all-subs -f bestaudio --extract-audio --audio-format wav --sub-format srt -o "%(title)s.%(ext)s" --cookies-from-browser chrome url
+  ```
+
+  - **For Videos Without Subtitles:**  
+    [Whisper](https://github.com/openai/whisper) is used to generate subtitles in SRT format:
+
+    ```bash
+    whisper sample.wav --model small --output_format srt --language Chinese
+    ```
+
+  - **Primitive Slicing:**  
+    To minimize timestamp errors, primitive slicing is performed to reduce large audio file sizes:
+
+    ```bash
+    python split_audio.py sample.wav output_folder`
+```
 
 ---
 
