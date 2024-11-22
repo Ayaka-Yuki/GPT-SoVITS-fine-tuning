@@ -49,12 +49,23 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ## 3. Feature Generation
 
 ### 3.1 Text Features
-- Transcribed text is input into a pretrained BERT model ([Chinese-Roberta-WWM-Ext-Large](https://huggingface.co/hfl/chinese-roberta-wwm-ext-large)) to generate BERT tokens.
-- The text is also converted to phonemes using [pypinyin-g2pW](https://github.com/mozillazg/pypinyin-g2pW).
+- Transcribed text is input into a pretrained BERT model ([Chinese-Roberta-WWM-Ext-Large](https://huggingface.co/lj1995/GPT-SoVITS/tree/main)) to generate BERT tokens. The model need to be downloaded to pretrained_model folder
+- The text is also converted to phonemes using [pypinyin-g2pW](https://github.com/mozillazg/pypinyin-g2pW). G2PWModel needs to be downloaded into tools folder in G2PWModel folder.
+- The extraction step can be done by running:
+   ```bash
+    python 1-dp-get-text.py
+  ```
 
 ### 3.2 Audio Features
-- Input audio is converted to CN-HuBERT features.
-- CN-HuBERT features are passed to a pretrained **SynthesizerTrn** model to generate semantic features.
+- Input audio is converted to CN-HuBERT features. We use a pretrained CN-HuBERT model ([chinese-hubert-base]https://huggingface.co/lj1995/GPT-SoVITS/tree/main)
+- CN-HuBERT features are passed to a pretrained **SynthesizerTrn** model (S2G488K.pth) to generate semantic features.
+- The extraction step can be done by running step by step:
+  ```bash
+    python 2-dp-get-hubert-wav32k.py
+  ```
+  ```bash
+    python 3-dp-get-semantic.py
+  ```
 
 ---
 
