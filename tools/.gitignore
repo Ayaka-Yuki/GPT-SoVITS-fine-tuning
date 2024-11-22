@@ -6,6 +6,7 @@ __pycache__
 *.pt
 *.pth
 *.ckpt
+*.txt
 logs
 generated_audio
 
