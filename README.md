@@ -58,7 +58,7 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 
 ### 3.2 Audio Features
 - Input audio is converted to CN-HuBERT features. We use a pretrained CN-HuBERT model ([chinese-hubert-base]https://huggingface.co/lj1995/GPT-SoVITS/tree/main)
-- CN-HuBERT features are passed to a pretrained **SynthesizerTrn** model (S2G488K.pth) to generate semantic features.
+- CN-HuBERT features are passed to a pretrained **SynthesizerTrn** model (S2G488K.pth) to generate semantic tokens.
 - The extraction step can be done by running step by step:
   ```bash
     python 2-dp-get-hubert-wav32k.py
@@ -72,13 +72,20 @@ This project fine-tunes a voice generator model based on the **GPT-SoVITS pipeli
 ## 4. Fine-Tuning
 
 ### 4.1 SoVITS Training
-- The model is trained to predict WAV audio outputs from semantic tokens.
-
+- The model is trained to predict WAV audio outputs from semantic tokens:
+- The training step is done by:
+  ```bash
+     python s2_train.py --config "./configs/tmp_s2.json" --exp_dir "./logs/v1_trial"
+  ```
 ### 4.2 GPT Training
 - The GPT component is trained to predict the next semantic token using:
   - Current semantic token
   - Phonemes
   - BERT features
+- The training step is done by:
+  ```bash
+    python s1_train.py --config "configs/tmp_s1.yaml"
+  ```
 
 ---
 
